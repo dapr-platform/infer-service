@@ -1,0 +1,6 @@
+{
+  "stream_url": "http://localhost:3000/api/stream/record/cam_video/test6.mp4.live.flv",
+  "id": "test_stream_ai",
+  "model_name": "yolov5nu",
+  "out_stream_url": "rtmp://localhost:30006/live/testai"
+}

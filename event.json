@@ -1,0 +1,27 @@
+{
+  "data": {
+    "create_at": "2024-08-08 21:49:01",
+    "description": "{\"id\":\"P6PwGdUXxoOjefdIi2qyO\",\"identifier\":\"bjtest\",\"name\":\"bjtest\",\"created_by\":\"\",\"created_time\":\"2024-08-08 21:23:13\",\"updated_by\":\"\",\"updated_time\":\"2024-08-08 21:23:13\",\"type\":0,\"ai_type\":0,\"username\":\"admin\",\"password\":\"GCDGTG\",\"stream_type\":\"rtsp\",\"stream_port\":554,\"stream_path\":\"/Streaming/Channels/101\",\"second_stream_path\":\"\",\"ip\":\"\",\"ai_model\":\"\",\"third_id\":\"\"}",
+    "dn": "zlm-manager_bjtestrtsp流信息不全",
+    "event_time": "2024-08-08 21:49:01",
+    "level": 3,
+    "location": "zlm-manager",
+    "object_id": "zlm-manager",
+    "object_name": "zlm-manager",
+    "status": 1,
+    "title": "bjtestrtsp流信息不全",
+    "type": 1,
+    "updated_at": "2024-08-08 21:49:01"
+  },
+  "datacontenttype": "application/json",
+  "id": "a8da56b3-61c6-4a80-ba5a-f25fd96dfa35",
+  "pubsubname": "pubsub",
+  "source": "ivmp-service",
+  "specversion": "1.0",
+  "time": "2024-08-08T13:49:01Z",
+  "topic": "eventTopic",
+  "traceid": "00-00000000000000000000000000000000-0000000000000000-00",
+  "traceparent": "00-00000000000000000000000000000000-0000000000000000-00",
+  "tracestate": "",
+  "type": "com.dapr.event.sent"
+}

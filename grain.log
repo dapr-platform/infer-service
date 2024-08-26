@@ -1,0 +1,67 @@
+2024-08-13 16:53:16,811 ERROR:Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<Server.serve() done, defined at /Users/liu/miniconda3/envs/infer-service/lib/python3.11/site-packages/uvicorn/server.py:67> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/Users/liu/miniconda3/envs/infer-service/lib/python3.11/site-packages/uvicorn/main.py", line 577, in run
+    server.run()
+  File "/Users/liu/miniconda3/envs/infer-service/lib/python3.11/site-packages/uvicorn/server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers-pro/pydevd_asyncio/pydevd_nest_asyncio.py", line 138, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers-pro/pydevd_asyncio/pydevd_nest_asyncio.py", line 234, in run_until_complete
+    self._run_once()
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers-pro/pydevd_asyncio/pydevd_nest_asyncio.py", line 286, in _run_once
+    handle._run()
+  File "/Users/liu/miniconda3/envs/infer-service/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/liu/miniconda3/envs/infer-service/lib/python3.11/asyncio/tasks.py", line 360, in __wakeup
+    self.__step()
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers-pro/pydevd_asyncio/pydevd_nest_asyncio.py", line 395, in step
+    step_orig(task, exc)
+  File "/Users/liu/miniconda3/envs/infer-service/lib/python3.11/asyncio/tasks.py", line 277, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/Users/liu/miniconda3/envs/infer-service/lib/python3.11/site-packages/uvicorn/server.py", line 68, in serve
+    with self.capture_signals():
+  File "/Users/liu/miniconda3/envs/infer-service/lib/python3.11/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/Users/liu/miniconda3/envs/infer-service/lib/python3.11/site-packages/uvicorn/server.py", line 328, in capture_signals
+    signal.raise_signal(captured_signal)
+KeyboardInterrupt
+2024-08-13 16:53:31,973 DEBUG:Starting stream streamUrl=http://localhost:3000/api/stream/record/cam_video/test1.mp4.live.flv outStreamUrl=rtmp://localhost:30006/live/test123ai
+2024-08-13 16:53:55,257 DEBUG:polygon=[[0.2606679035250464, 0.7525783828382838], [0.487012987012987, 0.5545585808580858], [0.6447124304267161, 0.8515882838283828], [0.6447124304267161, 0.8515882838283828]]
+2024-08-13 16:54:01,144 DEBUG:Using selector: KqueueSelector
+2024-08-13 16:54:08,007 DEBUG:absPolygon=[[500, 812], [935, 598], [1237, 919], [1237, 919]]
+2024-08-13 16:54:14,554 ERROR:cap read error False
+2024-08-13 16:54:14,657 ERROR:Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<Server.serve() done, defined at /Users/liu/miniconda3/envs/infer-service/lib/python3.11/site-packages/uvicorn/server.py:67> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/Users/liu/miniconda3/envs/infer-service/lib/python3.11/site-packages/uvicorn/main.py", line 577, in run
+    server.run()
+  File "/Users/liu/miniconda3/envs/infer-service/lib/python3.11/site-packages/uvicorn/server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers-pro/pydevd_asyncio/pydevd_nest_asyncio.py", line 138, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers-pro/pydevd_asyncio/pydevd_nest_asyncio.py", line 234, in run_until_complete
+    self._run_once()
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers-pro/pydevd_asyncio/pydevd_nest_asyncio.py", line 286, in _run_once
+    handle._run()
+  File "/Users/liu/miniconda3/envs/infer-service/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/liu/miniconda3/envs/infer-service/lib/python3.11/asyncio/tasks.py", line 360, in __wakeup
+    self.__step()
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers-pro/pydevd_asyncio/pydevd_nest_asyncio.py", line 395, in step
+    step_orig(task, exc)
+  File "/Users/liu/miniconda3/envs/infer-service/lib/python3.11/asyncio/tasks.py", line 277, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/Users/liu/miniconda3/envs/infer-service/lib/python3.11/site-packages/uvicorn/server.py", line 68, in serve
+    with self.capture_signals():
+  File "/Users/liu/miniconda3/envs/infer-service/lib/python3.11/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/Users/liu/miniconda3/envs/infer-service/lib/python3.11/site-packages/uvicorn/server.py", line 328, in capture_signals
+    signal.raise_signal(captured_signal)
+KeyboardInterrupt

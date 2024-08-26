@@ -1,0 +1,50 @@
+{
+  "stream_url": "http://localhost:3000/api/stream/record/cam_video/test1.mp4.live.flv",
+  "id": "test_stream_ai",
+  "model_name": "yolov5nu",
+  "ai_type": "Grain Occupancy Analysis",
+  "out_stream_url": "rtmp://localhost:30006/live/test123ai",
+  "configurations": [
+  {
+    "name": "low_value",
+    "description": "颜色区间-低值",
+    "default_value": 10,
+    "type": "int",
+    "value": "10"
+  },
+  {
+    "name": "high_value",
+    "description": "颜色区间-高值",
+    "default_value": 30,
+    "type": "int",
+    "value": "30"
+  },
+  {
+    "name": "polygonPoints",
+    "type": "polygon",
+    "value": [
+      {
+        "x": 0.2606679035250464,
+        "y": 0.7525783828382838
+      },
+      {
+        "x": 0.487012987012987,
+        "y": 0.5545585808580858
+      },
+      {
+        "x": 0.6447124304267161,
+        "y": 0.8515882838283828
+      },
+      {
+        "x": 0.6447124304267161,
+        "y": 0.8515882838283828
+      }
+    ]
+  },
+  {
+    "name": "polygonRatio",
+    "type": "polygon",
+    "value": 0.562152133580705
+  }
+]
+}
