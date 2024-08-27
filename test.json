@@ -1,6 +1,8 @@
 {
-  "stream_url": "http://localhost:3000/api/stream/record/cam_video/test6.mp4.live.flv",
-  "id": "test_stream_ai",
-  "model_name": "yolov5nu",
-  "out_stream_url": "rtmp://localhost:30006/live/testai"
+  "stream_url": "http://localhost:9080/ivmp/api/stream/record/cam_video/test2.mp4.live.flv",
+  "id": "test2",
+  "ai_type": "YOLO",
+  "model_name": "yolo_v5nu.pt",
+  "out_stream_url": "rtmp://localhost:30006/live/test2ai",
+  "configurations": [{"name": "confidence_threshold", "description": "门限", "default_value": 0.5, "type": "float"}, {"name": "model_file", "description": "模型文件(新上传的文件名将以模型的名称+版本进行保存)", "default_value": "", "type": "file"}]
 }

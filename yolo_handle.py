@@ -9,9 +9,11 @@ from ultralytics.utils.plotting import Annotator
 from typing import List, Dict, Any, Tuple
 import threading
 import subprocess
+import logging
 
 from utils.augmentations import letterbox
 from util import getPolygonFromConfiguration,get_absolute_polygon
+
 class YoloHandler:
     def __init__(self, stop_channels: Dict[str, threading.Event]):
         self.img_net = {}
@@ -33,7 +35,7 @@ class YoloHandler:
             ]
         }
     def load_model(self, model_name: str):
-        model_path = os.path.join(self.default_model_folder, f"{model_name}.pt")
+        model_path = os.path.join(self.default_model_folder, f"{model_name}")
         if not os.path.exists(model_path):
             raise ValueError(f"Model {model_name} not found in {self.default_model_folder}")
         return YOLO(model_path)
@@ -143,6 +145,7 @@ class YoloHandler:
                     break
                 ret_val, img0 = cap.read()
                 if not ret_val:
+                    logging.error(f"Failed to read frame from video stream: {stream_url}")
                     break
 
                 if absPolygon is not None and len(absPolygon) > 0:
@@ -150,10 +153,22 @@ class YoloHandler:
                     cv2.fillPoly(mask, [np.array(absPolygon)], (255, 255, 255))
                     img0 = cv2.bitwise_and(img0, mask)
 
-                img = self.preprocess_image(img0, input_size)
-                results = model(img)
+                #img = self.preprocess_image(img0, input_size)
+                #logging.debug(f"Preprocessed image shape: {img.shape}")
+                try:
+                    results = model.predict(source=img0,imgsz=input_size)
+                except Exception as e:
+                    #logging.error(f"Exception during model inference: {e}", exc_info=True)
+                    process.stdin.write(img0.tobytes())
+                    process.stdin.flush()
+                    continue
 
                 annotated_img = results[0].plot()
+                if annotated_img is None or annotated_img.size == 0:
+                    process.stdin.write(img0.tobytes())
+                    process.stdin.flush()
+                    continue
+
                 bgr_img = cv2.cvtColor(annotated_img, cv2.COLOR_RGB2BGR)
                 if bgr_img.shape[1] != WIDTH or bgr_img.shape[0] != HEIGHT:
                     bgr_img = cv2.resize(bgr_img, (WIDTH, HEIGHT))
@@ -165,6 +180,7 @@ class YoloHandler:
             process.wait()
         except Exception as e:
             print(f"Error: {e}")
+            logging.error(f"Error: {e}", exc_info=True)
         finally:
             if process is not None:
                 process.stdin.close()
@@ -191,5 +207,6 @@ class YoloHandler:
         WIDTH = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         HEIGHT = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         FPS = int(cap.get(cv2.CAP_PROP_FPS))
+        logging.debug(f"Video dimensions: {WIDTH}x{HEIGHT}, FPS: {FPS}")
         cap.release()
         return WIDTH, HEIGHT, FPS
