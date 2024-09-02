@@ -173,7 +173,7 @@ class YoloHandler:
                 if bgr_img.shape[1] != WIDTH or bgr_img.shape[0] != HEIGHT:
                     bgr_img = cv2.resize(bgr_img, (WIDTH, HEIGHT))
 
-                process.stdin.write(bgr_img.tobytes())
+                   process.stdin.write(bgr_img.tobytes())
                 process.stdin.flush()
 
             process.stdin.close()
