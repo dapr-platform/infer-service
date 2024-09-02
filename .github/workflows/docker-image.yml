@@ -25,7 +25,7 @@ jobs:
         login-server: https://registry.cn-hangzhou.aliyuncs.com
         region-id: cn-hangzhou
         username: ${{ secrets.ACR_USER }}
-        password: ${{ secrets.ACR_PASSWOWRD }}
+        password: ${{ secrets.ACR_PASSWORD }}
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
