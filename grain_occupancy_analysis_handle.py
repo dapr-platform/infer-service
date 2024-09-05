@@ -191,8 +191,8 @@ class GrainOccupancyAnalysisHandler:
                 overlay[result == 255] = (0, 255, 255)
                 alpha = 0.5
                 cv2.addWeighted(overlay, alpha, frame, 1 - alpha, 0, frame)
-
-                cv2.putText(frame, f'Grain: {grain_percentage:.2f}%', (10, frame_height - 10),
+                show_val = grain_percentage*100
+                cv2.putText(frame, f'Grain: {show_val:.2f}%', (10, frame_height - 10),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 0, 255), 2)
 
                 process.stdin.write(frame.tobytes())
