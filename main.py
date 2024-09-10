@@ -9,8 +9,8 @@ from pydantic import BaseModel
 from typing import List, Dict, Any, Tuple, Union
 from concurrent.futures import ThreadPoolExecutor
 
-from yolo_handle import YoloHandler
-from others import OtherAIHandler
+#from yolo_handle import YoloHandler
+from yolo_multi_handle import YoloV5Handler, YoloV8Handler
 from grain_occupancy_analysis_handle import GrainOccupancyAnalysisHandler
 import logging
 # 配置日志文件
@@ -44,7 +44,9 @@ executor = ThreadPoolExecutor(max_workers=10)
 lock = threading.Lock()
 
 # Initialize handlers
-yolo_handler = YoloHandler(stop_channels)
+#yolo_handler = YoloHandler(stop_channels)
+yolov5_handler = YoloV5Handler(stop_channels)
+yolov8_handler = YoloV8Handler(stop_channels)
 grain_occupancy_handler = GrainOccupancyAnalysisHandler(stop_channels)
 
 
@@ -92,7 +94,8 @@ def list_running_streams():
 def get_supported_ai_types():
     response_data = {
         "machine_learning": [
-            yolo_handler.get_info(),
+            yolov5_handler.get_info(),
+            yolov8_handler.get_info(),
             # Add other machine learning models here
         ],
         "opencv": [
@@ -108,8 +111,11 @@ def process_img(request: ProcessImgRequest):
     logging.debug(f"process image req={request}")
     ai_type = request.ai_type
     try:
-        if ai_type == 'YOLO':
-            result = yolo_handler.process_img(request.img_base64, request.model_name,
+        if ai_type == 'YOLOv5':
+            result = yolov5_handler.process_img(request.img_base64, request.model_name,
+                                              request.configurations)
+        elif ai_type == 'YOLOv8':
+            result = yolov8_handler.process_img(request.img_base64, request.model_name,
                                               request.configurations)
         elif ai_type == 'Grain Occupancy Analysis':
             result = grain_occupancy_handler.process_img(request.img_base64, request.configurations)

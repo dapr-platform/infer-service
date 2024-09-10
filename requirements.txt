@@ -7,3 +7,4 @@ ultralytics~=8.2.75
 pytest~=7.4.4
 dapr~=1.13.0
 nanoid~=2.0.0
+yolov5~=7.0.13
