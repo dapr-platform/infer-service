@@ -138,8 +138,11 @@ def process_stream(request: ProcessStreamRequest):
     stop_channels[id] = threading.Event()
 
     try:
-        if ai_type == 'YOLO':
-            executor.submit(yolo_handler.process_stream_worker, request.stream_url, id, request.model_name,
+        if ai_type == 'YOLOv5':
+            executor.submit(yolov5_handler.process_stream_worker, request.stream_url, id, request.model_name,
+                            request.out_stream_url,  request.configurations)
+        elif ai_type =='YOLOv8':
+            executor.submit(yolov8_handler.process_stream_worker, request.stream_url, id, request.model_name,
                             request.out_stream_url,  request.configurations)
         elif ai_type == 'Grain Occupancy Analysis':
             executor.submit(grain_occupancy_handler.process_stream_worker, request.stream_url, id,

@@ -8,7 +8,8 @@ os.environ['TORCH_HOME'] = './torch_cache'
 class YoloV5Test:
     def __init__(self, model_path: str):
         self.modelPath = model_path
-        self.model = torch.hub.load('ultralytics/yolov5', 'custom', path=model_path)
+        #self.model = torch.hub.load('ultralytics/yolov5', 'custom', path=model_path)
+        self.model = torch.hub.load('torch_cache/hub/ultralytics_yolov5_master', 'custom', path=model_path,source='local')
 
     @staticmethod
     def encode_image(image_path):

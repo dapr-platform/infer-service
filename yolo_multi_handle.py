@@ -89,6 +89,8 @@ class YoloBaseHandler:
 
     def process_img(self, img_base64: str, model_name: str, configurations: List[Dict[str, any]] = None):
         try:
+            if ',' in img_base64:
+                img_base64 = img_base64.split(',', 1)[1]
             img_bytes = base64.b64decode(img_base64)
             img_np = np.frombuffer(img_bytes, np.uint8)
             img = cv2.imdecode(img_np, cv2.IMREAD_COLOR)
@@ -229,7 +231,7 @@ class YoloV5Handler(YoloBaseHandler):
 
     def load_specific_model(self, model_path: str):
         # 使用 torch.hub.load 来加载 YOLOv5 模型
-        return torch.hub.load('ultralytics/yolov5', 'custom', path=model_path, source='local')
+        return torch.hub.load('torch_cache/hub/ultralytics_yolov5_master', 'custom', path=model_path,source='local')
 
     def run_inference(self, model, img, confidence_threshold: float):
         results = model(img)
@@ -280,7 +282,9 @@ class YoloV5Handler(YoloBaseHandler):
         return np.squeeze(results.render())
 
     def get_input_size(self, model):
-        return model.imgsz
+        if hasattr(model, 'imgsz'):
+            return model.imgsz
+        return (640, 640)  # 默认输入尺寸
 
 
 # YOLOv8 实现类

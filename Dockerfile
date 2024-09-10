@@ -15,7 +15,7 @@ COPY requirements.txt /app/
 # 安装 Python 依赖
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN apt-get update && apt-get install -y net-tools
+RUN apt-get update && apt-get install -y net-tools git && rm -rf /var/lib/apt/lists/*
 
 
 # 复制当前目录内容到容器的 /app 目录中
